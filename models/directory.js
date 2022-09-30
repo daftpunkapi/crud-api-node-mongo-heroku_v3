@@ -47,4 +47,4 @@ const dir_schema = new mongoose.Schema({
     }
 });
 
-module.exports = new mongoose.model('Directory', dir_schema)
+module.exports = new mongoose.model("directories", dir_schema)

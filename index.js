@@ -10,13 +10,11 @@ const PORT = process.env.PORT || 3000
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-
-
 //routes
 app.use('/api/company', companyroute);
 
 
-//connect to mongoDB atlas 
+//connect to mongoDB Atlas 
 mongoose.connect(
     process.env.MONGO_URL,
     {useNewUrlParser:true}
