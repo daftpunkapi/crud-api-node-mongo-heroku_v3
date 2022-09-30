@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const app = express();
 require('dotenv').config();
 const companyroute = require('./routes/directory');
+const usersroute = require('./routes/users');
 
 const PORT = process.env.PORT || 3000
 
@@ -12,7 +13,7 @@ app.use(express.urlencoded({extended:true}));
 
 //routes
 app.use('/api/company', companyroute);
-
+app.use('/api/users', usersroute);
 
 //connect to mongoDB Atlas 
 mongoose.connect(

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Company = require('../models/directory');
+const { isAdmin } = require("../middlewares/authorize");
 
 // POST : Create new company entry
 router.post("/",(req,res) => { 
@@ -65,7 +66,7 @@ router.put("/:id", async (req, res) => {
   });
   
 //   //DELETE BOOK BASED ON ID
-  router.delete("/:id", async (req, res) => {
+  router.delete("/:id", isAdmin, async (req, res) => {
     const comp = await Company.findByIdAndRemove(req.params.id);
     if (!comp) res.status(404).send("Company with id not found");
     res.send("Company deleted");
