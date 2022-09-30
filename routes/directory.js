@@ -25,6 +25,7 @@ router.post("/",(req,res) => {
 });
 
 
+
 // GET : Read all companies
 router.get("/", (req,res) => {
     Company.find()
