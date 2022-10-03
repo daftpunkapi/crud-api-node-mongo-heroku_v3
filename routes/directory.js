@@ -48,8 +48,8 @@ router.get("/year/:year", async (req, res) => {
 // router.get("/random", async (req, res) => {
 //   // get_id = 
 //   // const query = {_id : get_id};
-//   Company.aggregate(
-//     [{ $sample: {size:1} }] )
+//   await Company.aggregate(
+//     [{ $sample : {size : 1} }] )
 //   .then(companies => {res.send(companies)})
 //   .catch(error => {
 //       res.status(500).send("Company data could not be retrieved");
