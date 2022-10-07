@@ -13,6 +13,18 @@ router.get("/all", (req,res) => {
     });
 });
 
+// //GET : Random Company
+router.get("/random", async (req, res) => {
+  // get_id = 
+  // const query = {_id : get_id};
+  await Company.aggregate(
+    [{ $sample : {size : 1} }] )
+  .then(companies => {res.send(companies)})
+  .catch(error => {
+      res.status(500).send("Company data could not be retrieved");
+  });
+});
+
 //GET : By name
 router.get("/:name", async (req, res) => {
   var query = {Company : req.params.name};
@@ -32,29 +44,6 @@ router.get("/year/:year", async (req, res) => {
       res.status(500).send("Company data could not be retrieved");
   });
 });
-
-// //GET : Random Company by MATH QUERY FN
-// router.get("/random", async (req, res) => {
-//   var query = {
-//     state : 'OK',
-//     rnd : {
-//       $gte: Math.random()
-//     }
-//   };
-//   res.send(Company.findOne(query));
-// });
-
-// // //GET : Random Company
-// router.get("/random", async (req, res) => {
-//   // get_id = 
-//   // const query = {_id : get_id};
-//   await Company.aggregate(
-//     [{ $sample : {size : 1} }] )
-//   .then(companies => {res.send(companies)})
-//   .catch(error => {
-//       res.status(500).send("Company data could not be retrieved");
-//   });
-// });
 
 
 //DELETE : By Comapny Name
