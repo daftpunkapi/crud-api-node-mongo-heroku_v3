@@ -5,7 +5,7 @@ const { isAdmin } = require("../middlewares/authorize");
 
 
 // GET : All companies
-router.get("/allz", (req,res) => {
+router.get("/all", (req,res) => {
     Company.find()
     .then(companies => {res.send(companies)})
     .catch(error => {
