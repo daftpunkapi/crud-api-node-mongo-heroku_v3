@@ -52,9 +52,9 @@ router.delete("/delete/:company", async (req, res) => {
   if (!comp) res.status(404).send("Company with id not found");
   res.send("Company deleted");
 });
-
+     
 //DELETE : By ID
-router.delete("delete_id/:id", async (req, res) => {
+router.delete("/delete_id/:id", async (req, res) => {
   const comp = await Company.findByIdAndRemove(req.params.id);
   if (!comp) res.status(404).send("Company with id not found");
   res.send("Company deleted");
